@@ -52,11 +52,11 @@ def get_chat_response(query, chat_history=None):
     return response.json()
     
 def get_response(query, chat_history=None):
-    url = 'https://clovastudio.stream.ntruss.com/testapp/v1/skillsets/1gpgras5/versions/1/final-answer'
+    url = 'https://clovastudio.stream.ntruss.com/testapp/v1/skillsets/1gpgras5/versions/2/final-answer'
     headers = {
         'X-NCP-CLOVASTUDIO-API-KEY': 'NTA0MjU2MWZlZTcxNDJiY3flonnxvJSfylWIfIqWaqCM9uTaAYEVA9zD4QhdLVxv',
         'X-NCP-APIGW-API-KEY': 'wbbeHlV3ZZzC8E4FHwrrWeFgz5ciQKuxaaG3mdRU',
-        'X-NCP-CLOVASTUDIO-REQUEST-ID': '500c37dc-f00a-4c21-a5a4-d6ef42ddcb1d',
+        'X-NCP-CLOVASTUDIO-REQUEST-ID': '5ad896eb87304c398613f93c5a0b78e8',
         'Content-Type': 'application/json'
     }
     if chat_history:
