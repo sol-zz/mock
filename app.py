@@ -1,16 +1,7 @@
 import streamlit as st
 import json
 import requests
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-def get_access_token():
-    url = 'https://beta-api-hyperclova.navercorp.com/v1/auth/token'
-    headers = {
-        'Authorization': 'Basic NDRlYmY1ODdiNjJjNDg2Mzk4YzExYThjNzliNWM4NDA6NDMzZjBlYzgwZWU3M2VhYzI4MzY1ZjJmYzFhNzI3ZWI0M2MwMmJjZWI3YWJkZTNmYWQwNTI0YmRkN2UyYTM5Zg==',
-    }
-    response = requests.get(url, headers=headers, verify=True)
-    return response.json()
 
 def get_domain(query, chat_history=None):
     url = 'https://clovastudio.stream.ntruss.com/testapp/v1/chat-completions/HCX-DASH-001'
@@ -61,17 +52,17 @@ def get_chat_response(query, chat_history=None):
     return response.json()
     
 def get_response(query, chat_history=None):
-    access_token = get_access_token().get('result').get('accessToken')
-    url = 'https://beta-api-hyperclova.navercorp.com/v2/skillsets/2wjikbse/versions/4/final-answer'
+    url = 'https://clovastudio.stream.ntruss.com/testapp/v1/skillsets/1gpgras5/versions/1/final-answer'
     headers = {
-        'Authorization': access_token,
+        'X-NCP-CLOVASTUDIO-API-KEY': 'NTA0MjU2MWZlZTcxNDJiY3flonnxvJSfylWIfIqWaqCM9uTaAYEVA9zD4QhdLVxv',
+        'X-NCP-APIGW-API-KEY': 'wbbeHlV3ZZzC8E4FHwrrWeFgz5ciQKuxaaG3mdRU',
+        'X-NCP-CLOVASTUDIO-REQUEST-ID': '500c37dc-f00a-4c21-a5a4-d6ef42ddcb1d',
         'Content-Type': 'application/json'
     }
     if chat_history:
         data = {'query': query, 'chatHistory': chat_history, 'requestOverride': {'baseOperation': {'header': {'X-Naver-Client-Id': 'uy50efDP8b8VGjP56iWJ', 'X-Naver-Client-Secret': 'tLPLcMbYJM'}}}}
     else:
         data = {'query': query, 'requestOverride': {'baseOperation': {'header': {'X-Naver-Client-Id': 'uy50efDP8b8VGjP56iWJ', 'X-Naver-Client-Secret': 'tLPLcMbYJM'}}}}
-
     response = requests.post(url, headers=headers, data=json.dumps(data))
     return response.json()
 
