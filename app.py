@@ -7,7 +7,7 @@ def get_access_token():
     headers = {
         'Authorization': 'Basic NDRlYmY1ODdiNjJjNDg2Mzk4YzExYThjNzliNWM4NDA6NDMzZjBlYzgwZWU3M2VhYzI4MzY1ZjJmYzFhNzI3ZWI0M2MwMmJjZWI3YWJkZTNmYWQwNTI0YmRkN2UyYTM5Zg==',
     }
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, verify=True)
     return response.json()
 
 def get_domain(query, chat_history=None):
