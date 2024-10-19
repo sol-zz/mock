@@ -1,6 +1,8 @@
 import streamlit as st
 import json
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 def get_access_token():
     url = 'https://beta-api-hyperclova.navercorp.com/v1/auth/token'
