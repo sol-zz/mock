@@ -2,6 +2,12 @@ import streamlit as st
 import json
 import requests
 
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 def get_domain(query, chat_history=None):
     url = 'https://clovastudio.stream.ntruss.com/testapp/v1/chat-completions/HCX-DASH-001'
